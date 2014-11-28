@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  description: MyString
+  user_id: 1
+  phase_id: 1
+  history: MyString
+
+two:
+  description: MyString
+  user_id: 1
+  phase_id: 1
+  history: MyString
