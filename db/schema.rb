@@ -20,7 +20,7 @@ ActiveRecord::Schema.define(version: 20150506200501) do
     t.datetime "updated_at"
     t.string   "password_digest"
     t.string   "remember_token"
-    t.integer  "role"
+    t.integer  "role",            default: 3
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true
