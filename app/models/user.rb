@@ -1,5 +1,6 @@
 class User < ActiveRecord::Base
-  
+  has_many :tasks
+
   before_save { self.email = email.downcase }
   
   validates :name,  presence: true, length: { maximum: 50 }
@@ -10,7 +11,7 @@ class User < ActiveRecord::Base
   has_secure_password
   validates :password, length: { minimum: 6 }
 
-  #role: 0 => admin, 1=> advanced, 2=> translator, 3=> client
+  #role: 0 => admin, 1=> manager, 2=> advanced, 3=> translator, 4=>client
 
   def User.new_remember_token
     SecureRandom.urlsafe_base64
@@ -22,6 +23,14 @@ class User < ActiveRecord::Base
 
   def admin?
     self.role == 0
+  end
+
+  def manager?
+    self.role < 2
+  end
+
+  def advanced?
+    self.role < 3
   end
 
   private
